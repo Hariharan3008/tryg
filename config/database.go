@@ -45,6 +45,8 @@ func ConnectDatabase() error {
 		return err
 	}
 
+	db.Migrator().DropTable(&models.Entry{})
+
 	if err := db.AutoMigrate(&models.Entry{}); err != nil {
 		return err
 	}
